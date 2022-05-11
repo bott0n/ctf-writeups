@@ -1,3 +1,5 @@
+// From: https://www.anquanke.com/post/id/226710
+
 // Helper function start
 var buf = new ArrayBuffer(0x8);
 var dv = new DataView(buf);

@@ -1,0 +1,18 @@
+[submodule "themes/papermod"]
+	path = themes/papermod
+	url = https://github.com/adityatelange/hugo-PaperMod.git
+[submodule "themes/stack"]
+	path = themes/stack
+	url = https://github.com/CaiJimmy/hugo-theme-stack.git
+[submodule "themes/hyde"]
+	path = themes/hyde
+	url = https://github.com/spf13/hyde.git
+[submodule "themes/hyde-hyde"]
+	path = themes/hyde-hyde
+	url = https://github.com/htr3n/hyde-hyde.git
+[submodule "themes/npqhugo"]
+	path = themes/npqhugo
+	url = https://github.com/saadsolimanxyz/npqhugo.git
+[submodule "themes/ficurinia"]
+	path = themes/ficurinia
+	url = https://gitlab.com/gabmus/hugo-ficurinia.git

@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://0.0.0.0/categories/</loc>
+    <loc>https://bott0m.github.io/ctf-writeups/public/categories/</loc>
   </url><url>
-    <loc>http://0.0.0.0/manifest/index.json</loc>
+    <loc>https://bott0m.github.io/ctf-writeups/public/manifest/index.json</loc>
   </url><url>
-    <loc>http://0.0.0.0/</loc>
+    <loc>https://bott0m.github.io/ctf-writeups/public/</loc>
   </url><url>
-    <loc>http://0.0.0.0/search/</loc>
+    <loc>https://bott0m.github.io/ctf-writeups/public/search/</loc>
   </url><url>
-    <loc>http://0.0.0.0/tags/</loc>
+    <loc>https://bott0m.github.io/ctf-writeups/public/tags/</loc>
   </url>
 </urlset>

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "My New Hugo Site",
-  "short_name": "My New Hugo Site",
+  "name": "Blogs",
+  "short_name": "Blogs",
   "start_url": "/",
   "display": "standalone",
   
@@ -10,6 +10,25 @@
   "background_color": "#242629",
   "theme_color": "#db5793"
   
+    ,
+    "description": "A description for my website"
+  
+  
+    ,
+    "icons": [
+      {
+        "src": "/icon512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "/icon512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any"
+      }
+    ]
   
 }
 

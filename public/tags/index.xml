@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on My New Hugo Site</title>
-    <link>https://bott0m.github.io/ctf-writeups/public/tags/</link>
-    <description>Recent content in Tags on My New Hugo Site</description>
+    <title>Tags on Blogs</title>
+    <link>https://bott0n.github.io/tags/</link>
+    <description>Recent content in Tags on Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://bott0m.github.io/ctf-writeups/public/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <copyright>Some copyright notice - [my license](https://example.com/license)</copyright>
+    <lastBuildDate>Sat, 08 Jul 2023 16:04:50 +0800</lastBuildDate><atom:link href="https://bott0n.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hackthebox</title>
+      <link>https://bott0n.github.io/tags/hackthebox/</link>
+      <pubDate>Sat, 08 Jul 2023 16:04:50 +0800</pubDate>
+      
+      <guid>https://bott0n.github.io/tags/hackthebox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ctf</title>
+      <link>https://bott0n.github.io/tags/ctf/</link>
+      <pubDate>Sat, 19 Nov 2022 17:44:45 +0800</pubDate>
+      
+      <guid>https://bott0n.github.io/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

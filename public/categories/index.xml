@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on My New Hugo Site</title>
-    <link>https://bott0m.github.io/ctf-writeups/public/categories/</link>
-    <description>Recent content in Categories on My New Hugo Site</description>
+    <title>Categories on Blogs</title>
+    <link>https://bott0n.github.io/categories/</link>
+    <description>Recent content in Categories on Blogs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://bott0m.github.io/ctf-writeups/public/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <copyright>Some copyright notice - [my license](https://example.com/license)</copyright><atom:link href="https://bott0n.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

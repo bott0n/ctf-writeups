@@ -11,10 +11,15 @@ copyright = "Some copyright notice - [my license](https://example.com/license)"
 paginate = 5  # number of articles per page in the index
 summaryLength = 70  # number of words for article summaries
 
+[markup]
+  [markup.tableOfContents] 
+    endLevel = 5 
+    ordered = false       
+    startLevel = 1  
 
 [params]
-    author = "button"
-    description = "A description for my website"  # this will be added as metadata
+    author = "botton"
+    description = "My personal blog"  # this will be added as metadata
 
     posts = "posts"  # content directory where to find home page posts; default searches in "posts" and "post"
     showPostsLink = true  # show or hide the link to the simple post list
@@ -88,7 +93,7 @@ summaryLength = 70  # number of words for article summaries
 
     # alternative sidebar layout
     enableSidebarLayout = false
-    tocInSidebar = false  # if the sidebar is enbabled, show the TOC in the sidebar
+    tocInSidebar = true  # if the sidebar is enbabled, show the TOC in the sidebar
 
     # redirect to baseURL if current URL host doesn't match
     # useful if deploying in gitlab pages with custom domain and don't want
@@ -113,18 +118,18 @@ summaryLength = 70  # number of words for article summaries
     [[menu.main]]
         identifier = "about"
         name = "About"
-        url = "/about/"
+        url = "http://localhost:1313/about/aboutme/"
         weight = 10
     # these links (menu.icons) will be added as icon links below the main nav
     [[menu.icons]]
         identifier = "github"
         name = "GitHab"
-        url = "https://github.com/bott0m"
+        url = "https://github.com/bott0n"
         weight = 10
     [[menu.icons]]
         identifier = "twitter"
         name = "Titter"
-        url = "https://twitter.com/bottom3310"
+        url = "https://twitter.com/botton3310"
         weight = 20
 
 # this section is necessary if you want infinite scrolling

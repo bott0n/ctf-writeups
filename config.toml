@@ -118,7 +118,7 @@ summaryLength = 70  # number of words for article summaries
     [[menu.main]]
         identifier = "about"
         name = "About"
-        url = "http://localhost:1313/about/aboutme/"
+        url = "https://bott0n.github.io/about/aboutme/"
         weight = 10
     # these links (menu.icons) will be added as icon links below the main nav
     [[menu.icons]]

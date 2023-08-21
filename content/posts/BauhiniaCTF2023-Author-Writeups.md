@@ -2,6 +2,7 @@
 title: "BauhiniaCTF 2023 Author Writeups"
 date: 2023-08-20T17:37:11+08:00
 toc: true
+description: BauhiniaCTF 2023 Author Writeups of my challenges
 draft: false
 ---
 

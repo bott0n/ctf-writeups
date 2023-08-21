@@ -311,7 +311,7 @@ p.interactive()
 
 Kernpass is a kernel pwn challenge. This is the first time I make a kernel pwn challegne, so it actually cost me so much time on compiling kernel, busybox and kernel module debugging. To be honest, this is the very time for me to create a kernel pwnchallenge, amount of terrible permission misconfiguration leads to several unintended solution. I apologize for that.
 
-This challnege is a very classic "note-liked" heap challenge, it should be easy for the kernel pwn player. You may find that the challenge called "kernpass" but there are not any encryption or endcoding elements inside. In fact, in the very early stages of the idea, I did want to implement a complex encryption system on it. However, I found it difficult to solve on my own :( and the hard deadline is coming soon. So I keep it simple.
+This challnege is a very classic "note-liked" heap challenge, it might be easy for the kernel pwn player. You may find that the challenge called "kernpass" but there are not any encryption or endcoding elements inside. In fact, in the very early stages of the idea, I did want to implement a complex encryption system on it. However, I found it difficult to solve on my own :( and the hard deadline is coming soon. So I keep it simple.
 
 I think it is a light work for kernel pwn player to reverse it, so I decided to provide the kernel module only.
 

